@@ -1,0 +1,91 @@
+-e VARIABLE_ENTORNO=valor -> es para asginar una variable de entorno.
+-d -> "Detach", funciona para que corra el contenedor en segundo plano.
+-p PUERTO_MAQUINA:PUERTO_DOCKER -> Funciona para personalizar el puerto de los contenedores.
+-dp PORT:PORT -> Atajo, para usar el "-d" y "-p"
+
+
+|-Containers-|
+* docker container rm <id_contenedor> -> Remueve el contenedor, para eliminar varias, es poner los ids con espacios.
+
+* docker container ls -> Mustra lista de los contenedores que estén en línea (montados)
+
+* docker container ls -a -> Muestra lista de todos los contenedores (online y offline)
+
+* docker container stop <id_contenedor> -> Detiene el contenedor, para detener varias, es poner los ids con espacios.
+
+* docker container log <id_contenedor> -> Muestra los logs del contenedor.
+
+
+
+
+|-Images-|
+docker image rm <id_image> -> Remueve la imagen, para eliminar varias, es poner los ids con espacios.
+
+* docker image ls -> Mustra lista de los imagenes que estén en línea (montados)
+
+* docker image ls -a -> Muestra lista de todos los imagenes (online y offline)
+
+* docker build --tag cron-ticker . => Sirve para construir una imagen, mediante el "DockerFile".
+
+* docker push nombre_imagen => Para subir la imagen al repositorio.
+
+* docker image tag nombre_imagen:tag nuevo_nombre:tag => Renombrar tag a las imagenes.
+
+|-Volumes-|
+* docker volume create <name_volume> -> Crea un nuevo volumen
+* docker volume ls -> Muestra todos los volumenes
+* docker volume inspect <name_volume> -> Muestra volumen en especifico
+* docker volume rm <name_volume> -> Elimina el volumen
+* docker volume prune -> Elimina todos los volumenes no usados
+* docker run -v name_volumen:/ruta/almacenada getting-started -> usar un volumen al correr un contenedor
+
+
+|-Container Networking-|
+
+
+|- Descarga de Imagenes y montado de contenedores -|
+* docker pull <imagen>
+
+----
+* docker container run ` 
+  -e VARIABLE_DE_ENTORNO=valor `
+  -dp 3306:3306 `
+  nombre-de-imagen:versión-o-etiqueta
+
+EJEMPLO: 
+docker container run `
+--name mariadb `
+-e MARIADB_USER=example-user `
+-e MARIADB_PASSWORD=user-password `
+-e MARIADB_ROOT_PASSWORD=root-secret-password `
+-e MARIADB_DATABASE=world-db `
+--volume world-db:/var/lib/mysql `
+--network world-app `
+-dp 3307:3306 `
+mariadb:jammy
+------
+
+docker container run `
+--name phpmyadmin `
+-dp 8081:80 `
+-e PMA_ARBITRARY=1 `
+--network world-app `
+phpmyadmin:5.2.0-apache
+
+phpmyadmin:5.2.0-apache
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
