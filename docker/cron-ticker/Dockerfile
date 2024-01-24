@@ -1,5 +1,8 @@
 # /app /usr /lib
-FROM node:19.2-alpine3.16
+FROM --platform=$BUILDPLATFORM node:19.2-alpine3.16
+# FROM node:19.2-alpine3.16
+#--platform=linux/amd64
+
 # /app
 
 # cd /app
