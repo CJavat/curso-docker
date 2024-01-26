@@ -90,7 +90,7 @@ Ejemplo: FROM --platform=$BUILDPLATFORM node:19.2-alpine3.16.
 Asignando esa variable de entorno ya se puede hacer lo siguiente:
 
 * docker buildx build --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm64/v8 `
--t cjavat/cron-ticker:latest --push . -> Con eso se hace el build de varias arquitecturas y lo sube a la repo
+-t <usuario>/<image>:<tag> --push . -> Con eso se hace el build de varias arquitecturas y lo sube a la repo
 
 
 
